@@ -24,13 +24,13 @@ const actions: ActionTree<JobsStore, any> = {
     fetchJobsList()
       .then((res) => {
         if (res.data) {
-          state.commit(UPDATE_JOBS_STATE, {
+          state.commit(UPDATE_STATE, {
             jobsList: res.data,
           });
         }
       })
       .catch((e) => console.dir(e));
-    state.commit(UPDATE_JOBS_STATE, {
+    state.commit(UPDATE_STATE, {
       loading: false,
     });
   },

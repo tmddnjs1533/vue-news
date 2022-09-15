@@ -19,13 +19,13 @@ const mutations: MutationTree<NewsStore> = {
     state.loading = payload.loading ? payload.loading : state.loading;
   },
 };
-
+//local mutation 호출 시 네임스페이스를 붙이지 않음
 const actions: ActionTree<NewsStore, any> = {
   [FETCH_STATE](state: ActionContext<NewsStore, any>) {
     fetchNewsList()
       .then((res) => {
         if (res.data) {
-          state.commit(UPDATE_NEWS_STATE, {
+          state.commit(UPDATE_STATE, {
             newsList: res.data,
             loading: false,
           });
@@ -33,7 +33,7 @@ const actions: ActionTree<NewsStore, any> = {
       })
       .catch((e) => {
         console.dir(e);
-        state.commit(UPDATE_NEWS_STATE, {
+        state.commit(UPDATE_STATE, {
           loading: false,
         });
       });

@@ -25,13 +25,13 @@ const actions: ActionTree<AskStore, any> = {
     fetchAskList()
       .then((res) => {
         if (res.data) {
-          state.commit(UPDATE_ASK_STATE, {
+          state.commit(UPDATE_STATE, {
             askList: res.data,
           });
         }
       })
       .catch((e) => console.dir(e));
-    state.commit(UPDATE_ASK_STATE, {
+    state.commit(UPDATE_STATE, {
       loading: false,
     });
   },
