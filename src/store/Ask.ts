@@ -1,7 +1,7 @@
 import { fetchAskList } from "@/api";
 import type { ActionContext, ActionTree, Module, MutationTree } from "vuex";
 
-export class AskStore {
+export class AskState {
   public loading = false;
   public askList = [];
 }
@@ -9,19 +9,19 @@ export class AskStore {
 const UPDATE_STATE = "UPDATE_STATE";
 const FETCH_STATE = "FETCH_STATE";
 
-export const UPDATE_ASK_STATE = `AskState/${UPDATE_STATE}`;
-export const FETCH_ASK_STATE = `AskState/${FETCH_STATE}`;
+export const UPDATE_ASK_STATE = `Ask/${UPDATE_STATE}`;
+export const FETCH_ASK_STATE = `Ask/${FETCH_STATE}`;
 
-const mutations: MutationTree<AskStore> = {
-  [UPDATE_STATE](state: AskStore, payload: AskStore) {
+const mutations: MutationTree<AskState> = {
+  [UPDATE_STATE](state: AskState, payload: AskState) {
     state.askList =
       payload.askList?.length > 0 ? payload.askList : state.askList;
     state.loading = payload.loading ? payload.loading : state.loading;
   },
 };
 
-const actions: ActionTree<AskStore, any> = {
-  [FETCH_STATE](state: ActionContext<AskStore, any>) {
+const actions: ActionTree<AskState, any> = {
+  [FETCH_STATE](state: ActionContext<AskState, any>) {
     fetchAskList()
       .then((res) => {
         if (res.data) {
@@ -37,11 +37,11 @@ const actions: ActionTree<AskStore, any> = {
   },
 };
 
-const AskState: Module<AskStore, any> = {
+const Ask: Module<AskState, any> = {
   namespaced: true,
-  state: new AskStore(),
+  state: new AskState(),
   mutations,
   actions,
 };
 
-export default AskState;
+export default Ask;

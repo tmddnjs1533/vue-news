@@ -1,5 +1,5 @@
 import axios from "axios";
-import type { IAsk, IJobs, INews } from "@/api/model";
+import type { FeedItem, User } from "@/api/model";
 
 const news = axios.create({
   baseURL: "https://api.hnpwa.com/v0/news",
@@ -13,16 +13,24 @@ const jobs = axios.create({
   baseURL: "https://api.hnpwa.com/v0/jobs",
 });
 
+const user = axios.create({
+  baseURL: "https://api.hnpwa.com/v0/user",
+});
+
 function fetchNewsList() {
-  return news.get<INews[]>("/1.json");
+  return news.get<FeedItem[]>("/1.json");
 }
 
 function fetchAskList() {
-  return ask.get<IAsk[]>("/1.json");
+  return ask.get<FeedItem[]>("/1.json");
 }
 
 function fetchJobsList() {
-  return jobs.get<IJobs[]>("/1.json");
+  return jobs.get<FeedItem[]>("/1.json");
 }
 
-export { fetchNewsList, fetchAskList, fetchJobsList };
+function fetchUser(id: string) {
+  return user.get<User>(`/${id}.json`);
+}
+
+export { fetchNewsList, fetchAskList, fetchJobsList, fetchUser };

@@ -1,26 +1,26 @@
 import { fetchJobsList } from "@/api";
 import type { ActionContext, ActionTree, Module, MutationTree } from "vuex";
 
-export class JobsStore {
+export class JobsState {
   public loading = false;
   public jobsList = [];
 }
 const UPDATE_STATE = "UPDATE_STATE";
 const FETCH_STATE = "FETCH_STATE";
 
-export const UPDATE_JOBS_STATE = `JobsState/${UPDATE_STATE}`;
-export const FETCH_JOBS_STATE = `JobsState/${FETCH_STATE}`;
+export const UPDATE_JOBS_STATE = `Jobs/${UPDATE_STATE}`;
+export const FETCH_JOBS_STATE = `Jobs/${FETCH_STATE}`;
 
-const mutations: MutationTree<JobsStore> = {
-  [UPDATE_STATE](state: JobsStore, payload: JobsStore) {
+const mutations: MutationTree<JobsState> = {
+  [UPDATE_STATE](state: JobsState, payload: JobsState) {
     state.jobsList =
       payload.jobsList?.length > 0 ? payload.jobsList : state.jobsList;
     state.loading = payload.loading ? payload.loading : state.loading;
   },
 };
 
-const actions: ActionTree<JobsStore, any> = {
-  [FETCH_STATE](state: ActionContext<JobsStore, any>) {
+const actions: ActionTree<JobsState, any> = {
+  [FETCH_STATE](state: ActionContext<JobsState, any>) {
     fetchJobsList()
       .then((res) => {
         if (res.data) {
@@ -36,11 +36,11 @@ const actions: ActionTree<JobsStore, any> = {
   },
 };
 
-const JobsState: Module<JobsStore, any> = {
+const Jobs: Module<JobsState, any> = {
   namespaced: true,
-  state: new JobsStore(),
+  state: new JobsState(),
   mutations,
   actions,
 };
 
-export default JobsState;
+export default Jobs;

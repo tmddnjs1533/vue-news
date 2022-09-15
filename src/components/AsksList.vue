@@ -1,16 +1,19 @@
 <template>
-  <div v-for="ask in askList" :key="ask.id">{{ ask.title }}</div>
+  <div v-for="ask in askList" :key="ask.id">
+    <a :href="ask.url">{{ ask.title }}</a>
+    <small>{{ ask.time_ago }} by {{ ask.user }}</small>
+  </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
 import { mapState, useStore } from "vuex";
-import { FETCH_ASK_STATE } from "@/store/AskState";
+import { FETCH_ASK_STATE } from "@/store/Ask";
 
 export default defineComponent({
   name: "AsksList",
   computed: {
-    ...mapState("AskState", {
+    ...mapState("Ask", {
       askList: "askList",
     }),
   },

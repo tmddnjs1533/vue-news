@@ -1,9 +1,10 @@
 import { createStore } from "vuex";
 import type { Module } from "vuex";
 
-import NewsState, { NewsStore } from "@/store/NewsState";
-import AskState, { AskStore } from "@/store/AskState";
-import JobsState, { JobsStore } from "@/store/JobsState";
+import News, { NewsState } from "@/store/News";
+import Ask, { AskState } from "@/store/Ask";
+import Jobs, { JobsState } from "@/store/Jobs";
+import User, { UserState } from "@/store/User";
 
 // export interface State {
 //   newsList: INews[];
@@ -13,16 +14,18 @@ import JobsState, { JobsStore } from "@/store/JobsState";
 
 export interface RootState {
   modules: {
-    NewsState: Module<NewsStore, any>;
-    AskState: Module<AskStore, any>;
-    JobsState: Module<JobsStore, any>;
+    News: Module<NewsState, any>;
+    Ask: Module<AskState, any>;
+    Jobs: Module<JobsState, any>;
+    User: Module<UserState, any>;
   };
 }
 
 export const store = createStore<RootState>({
   modules: {
-    NewsState,
-    AskState,
-    JobsState,
+    News,
+    Ask,
+    Jobs,
+    User,
   },
 });

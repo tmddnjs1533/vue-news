@@ -6,7 +6,6 @@
       <RouterLink to="/ask">Ask</RouterLink>
       <RouterLink to="/jobs">Jobs</RouterLink>
     </nav>
-    <RouterLink to="/user">User</RouterLink>
   </header>
 </template>
 
