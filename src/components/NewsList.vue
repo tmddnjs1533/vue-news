@@ -12,7 +12,9 @@ import { FETCH_NEWS_STATE } from "@/store/NewsState";
 export default defineComponent({
   name: "NewsList",
   computed: {
-    ...mapState("NewsState", ["newsList"]),
+    ...mapState("NewsState", {
+      newsList: "newsList",
+    }),
   },
   created() {
     const store = useStore();

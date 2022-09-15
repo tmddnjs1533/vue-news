@@ -10,7 +10,9 @@ import { FETCH_ASK_STATE } from "@/store/AskState";
 export default defineComponent({
   name: "AsksList",
   computed: {
-    ...mapState("AskState", ["askList"]),
+    ...mapState("AskState", {
+      askList: "askList",
+    }),
   },
   created() {
     const store = useStore();

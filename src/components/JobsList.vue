@@ -10,7 +10,9 @@ import { FETCH_JOBS_STATE } from "@/store/JobsState";
 export default defineComponent({
   name: "JobsList",
   computed: {
-    ...mapState("JobsState", ["jobsList"]),
+    ...mapState("JobsState", {
+      jobsList: "jobsList",
+    }),
   },
   created() {
     const store = useStore();
