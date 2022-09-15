@@ -1,6 +1,6 @@
 <template>
   <div v-for="ask in askList" :key="ask.id">
-    <a :href="ask.url">{{ ask.title }}</a>
+    <RouterLink :to="`/item/${ask.id}`">{{ ask.title }}</RouterLink>
     <small>{{ ask.time_ago }} by {{ ask.user }}</small>
   </div>
 </template>

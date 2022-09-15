@@ -5,6 +5,7 @@ import News, { NewsState } from "@/store/News";
 import Ask, { AskState } from "@/store/Ask";
 import Jobs, { JobsState } from "@/store/Jobs";
 import User, { UserState } from "@/store/User";
+import Item, { ItemState } from "@/store/Item";
 
 // export interface State {
 //   newsList: INews[];
@@ -18,6 +19,7 @@ export interface RootState {
     Ask: Module<AskState, any>;
     Jobs: Module<JobsState, any>;
     User: Module<UserState, any>;
+    Item: Module<ItemState, any>;
   };
 }
 
@@ -27,5 +29,6 @@ export const store = createStore<RootState>({
     Ask,
     Jobs,
     User,
+    Item,
   },
 });

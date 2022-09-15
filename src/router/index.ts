@@ -33,7 +33,7 @@ const router = createRouter({
       component: UserView,
     },
     {
-      path: "/item",
+      path: "/item/:id",
       name: "item",
       component: ItemView,
     },
